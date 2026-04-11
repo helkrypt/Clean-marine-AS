@@ -289,7 +289,9 @@ export default function Hero() {
               letterSpacing: "0.28em",
             }}
           >
-            Clean Marine AS — Offshore Rørrehabilitering
+            <span style={{ fontWeight: 700 }}>Clean Marine AS</span>
+            <br />
+            <span style={{ fontWeight: 400 }}>Offshore Rørrehabilitering</span>
           </motion.p>
 
           {/* H1 */}
