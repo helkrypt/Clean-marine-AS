@@ -43,7 +43,7 @@ body::before {
   inset: 0;
   z-index: 999;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.045;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
@@ -64,8 +64,36 @@ body::before {
   border: none;
 }
 
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(196, 81, 26, 0.3);
+  color: #F2EDE4;
+}
+
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #0A1628; }
-::-webkit-scrollbar-thumb { background: #2E4057; }
+::-webkit-scrollbar-thumb { background: #2E4057; border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: #C4511A; }
+
+/* ─── Tabular numbers ────────────────────────────────────────────────────── */
+.font-numeral {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Skip to content ────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-rust);
+  color: var(--color-parchment);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 1rem;
+}
