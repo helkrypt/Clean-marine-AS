@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-abyss: #0A1628;
+  --color-steel: #1C2B3A;
+  --color-hull: #2E4057;
+  --color-parchment: #F2EDE4;
+  --color-mist: #8A99A8;
+  --color-rust: #C4511A;
+  --color-rust-light: #E8703A;
+  --color-teal: #1A7A6E;
+  --color-teal-light: #22A090;
+
+  /* Typography */
+  --font-display: var(--font-barlow), "Impact", sans-serif;
+  --font-body: var(--font-ibm-plex), system-ui, sans-serif;
+  --font-numeral: var(--font-bebas), "Impact", sans-serif;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-abyss);
+  color: var(--color-parchment);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Noise Grain Overlay ────────────────────────────────────────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* ─── Technical Grid Pattern ─────────────────────────────────────────────── */
+.bg-tech-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ─── Rust Hairline ──────────────────────────────────────────────────────── */
+.rule-rust {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C4511A 40%, #C4511A 60%, transparent);
+  border: none;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A1628; }
+::-webkit-scrollbar-thumb { background: #2E4057; }
+::-webkit-scrollbar-thumb:hover { background: #C4511A; }
