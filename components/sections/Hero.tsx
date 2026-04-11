@@ -36,7 +36,7 @@ function PipeVisualization() {
       <svg
         viewBox="0 0 480 480"
         fill="none"
-        className="w-full max-w-[480px] h-auto"
+        className="w-full max-w-[260px] lg:max-w-[480px] h-auto"
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* Outer dashed ring — slow rotation */}
@@ -321,7 +321,9 @@ export default function Hero() {
           >
             <span className="text-parchment">Kjemisk rehabilitering av rørledninger offshore.</span>
             <br />
-            Vi fjerner korrosjon, kalk, biofilm og humus — uten å skade rørmaterialet.
+            Vi fjerner korrosjon, kalk, biofilm og humus
+            <br />
+            Uten å skade rørmaterialet
           </motion.p>
 
           {/* CTA row */}
@@ -341,7 +343,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Right column — technical visualization */}
-        <div className="hidden lg:flex items-center justify-center pr-8">
+        <div className="flex items-center justify-center lg:pr-8">
           <PipeVisualization />
         </div>
       </div>
