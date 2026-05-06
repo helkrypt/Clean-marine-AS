@@ -7,7 +7,6 @@ const navLinks = [
   { label: "Tjenester", href: "#services" },
   { label: "Om oss", href: "#expertise" },
   { label: "Prosess", href: "#process" },
-  { label: "Kontakt", href: "#contact" },
 ];
 
 export default function Header() {
