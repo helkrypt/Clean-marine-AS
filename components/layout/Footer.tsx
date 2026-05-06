@@ -56,6 +56,24 @@ export default function Footer() {
         <span className="text-mist text-xs">© {new Date().getFullYear()} Clean Marine AS</span>
         <span className="text-mist text-xs">Org.nr: 937 548 834</span>
       </div>
+
+      {/* Credit line */}
+      <div
+        className="mt-4 text-center"
+        style={{ fontFamily: "var(--font-ibm-plex)" }}
+      >
+        <span className="text-mist text-xs">
+          Nettside utviklet av{" "}
+          <a
+            href="https://helkrypt.no"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-mist hover:text-rust transition-colors duration-200 underline underline-offset-2"
+          >
+            Helkrypt AI
+          </a>
+        </span>
+      </div>
     </footer>
   );
 }
