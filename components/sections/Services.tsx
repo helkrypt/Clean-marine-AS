@@ -247,7 +247,7 @@ export default function Services() {
               }}
             >
               Vi spesialiserer oss på kjemisk fjerning av alle avleiringstyper
-              som hemmer effektiv offshore-drift.
+              som hemmer effektiv drift i offshore og maritim sektor.
             </p>
           </div>
         </AnimatedSection>
@@ -297,7 +297,7 @@ export default function Services() {
               icon={<HumusIcon size={52} />}
               title="Humus"
               sub="(Organiske sedimenter)"
-              desc="Organisk materiale og humus akkumuleres i lavtliggende rørpartier og skaper blokkering. Kjemisk behandling løser opp og fjerner sedimentene fullstendig uten mekanisk inngrep — kritisk for rør med begrenset tilgang på offshore-installasjoner."
+              desc="Organisk materiale og humus akkumuleres i lavtliggende rørpartier og skaper blokkering. Kjemisk behandling løser opp og fjerner sedimentene fullstendig uten mekanisk inngrep — kritisk for rør med begrenset tilgang på offshore- og maritime installasjoner."
               stat={{ value: "0", label: "Mekaniske inngrep nødvendig" }}
               accentColor="#8A99A8"
               featured

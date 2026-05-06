@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, IBM_Plex_Sans, Bebas_Neue } from "next/font/google";
+import StructuredData from "@/components/seo/StructuredData";
 import "./globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -24,27 +25,64 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Clean Marine AS — Rørehabilitering Offshore",
+  metadataBase: new URL("https://cleanmarin.no"),
+  title: "Clean Marine AS — Kjemisk Rørehabilitering Offshore & Maritim",
   description:
-    "Spesialister innen kjemisk rehabilitering av rørledninger offshore. Vi gjenoppretter igjengrodde rør til original tilstand på skip og rigger.",
+    "Spesialister på kjemisk rehabilitering av rørledninger i offshore og maritim sektor. 20+ års erfaring. Fjerner korrosjon, kalk, biofilm og humus uten å skade rørmaterialet.",
   keywords: [
     "rørehabilitering",
-    "offshore",
     "kjemisk rensing",
-    "rørledning",
+    "kjemisk rørrensing",
+    "rørledning rehabilitering",
+    "offshore",
+    "maritim sektor",
     "biofilm",
     "kalkavleiring",
     "korrosjon",
+    "MIC-korrosjon",
+    "humus avleiring",
     "rigg",
     "skip",
+    "Nordsjøen",
+    "Høvåg",
     "Clean Marine",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Clean Marine AS — Rørehabilitering Offshore",
+    title: "Clean Marine AS — Kjemisk Rørehabilitering Offshore & Maritim",
     description:
-      "Kjemisk rehabilitering av rørledninger offshore. Faglært personell med erfaring fra rigg og skip.",
+      "Kjemisk rehabilitering av rørledninger i offshore og maritim sektor. Faglært personell med erfaring fra rigg og skip.",
     type: "website",
     locale: "nb_NO",
+    url: "https://cleanmarin.no",
+    siteName: "Clean Marine AS",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Clean Marine AS — Rørehabilitering Offshore og Maritim",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Clean Marine AS — Kjemisk Rørehabilitering",
+    description:
+      "Kjemisk rehabilitering av rørledninger i offshore og maritim sektor.",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -58,7 +96,10 @@ export default function RootLayout({
       lang="nb"
       className={`${barlowCondensed.variable} ${ibmPlexSans.variable} ${bebasNeue.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <StructuredData />
+        {children}
+      </body>
     </html>
   );
 }

@@ -47,7 +47,7 @@ export default function Expertise() {
               style={{ fontFamily: "var(--font-barlow)", fontSize: "28px" }}
               className="text-parchment font-bold italic leading-snug"
             >
-              &ldquo;Vi kjenner offshore-industrien fra innsiden.&rdquo;
+              &ldquo;Vi kjenner offshore og maritim sektor fra innsiden.&rdquo;
             </p>
           </div>
         </AnimatedSection>
@@ -70,7 +70,7 @@ export default function Expertise() {
             >
               Faglært personell
               <br />
-              med offshore-erfaring
+              med erfaring fra offshore og maritim sektor
             </h2>
 
             {/* Body paragraphs */}
@@ -87,7 +87,7 @@ export default function Expertise() {
             >
               Teamet vårt holder relevante offshore-sertifikater og har
               førstehånds forståelse for kravene til drift og sikkerhet i
-              petroleumsindustrien.
+              offshore og maritim sektor.
             </p>
             <p
               style={{ fontFamily: "var(--font-ibm-plex)" }}

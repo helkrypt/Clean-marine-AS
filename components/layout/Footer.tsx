@@ -53,8 +53,8 @@ export default function Footer() {
         className="mt-8 pt-6 border-t border-hull flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
         style={{ fontFamily: "var(--font-ibm-plex)" }}
       >
-        <span className="text-mist text-xs">© 2024 Clean Marine AS</span>
-        <span className="text-mist text-xs">Org.nr: 000 000 000</span>
+        <span className="text-mist text-xs">© {new Date().getFullYear()} Clean Marine AS</span>
+        <span className="text-mist text-xs">Org.nr: 937 548 834</span>
       </div>
     </footer>
   );

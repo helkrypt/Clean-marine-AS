@@ -4,8 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 const metrics = [
-  { value: 20, suffix: "+", label: "Års erfaring", sublabel: "i offshore-industrien" },
-  { value: 500, suffix: "+", label: "Oppdrag", sublabel: "fullført på rigg og skip" },
+  { value: 20, suffix: "+", label: "Års erfaring", sublabel: "i offshore og maritim sektor" },
   { value: 100, suffix: "%", label: "Miljøsikker", sublabel: "godkjente kjemikalier" },
   { value: 48, suffix: "t", label: "Responstid", sublabel: "fra henvendelse til tilbud" },
 ];
@@ -82,7 +81,7 @@ export default function Stats() {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
           {metrics.map((m, i) => (
             <motion.div
               key={m.label}

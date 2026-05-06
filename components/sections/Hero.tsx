@@ -321,7 +321,7 @@ export default function Hero() {
               fontSize: "1.0625rem",
             }}
           >
-            <span className="text-parchment">Kjemisk rehabilitering av rørledninger offshore.</span>
+            <span className="text-parchment">Kjemisk rehabilitering av rørledninger i offshore og maritim sektor.</span>
             <br />
             Vi fjerner korrosjon, kalk, biofilm og humus
             <br />
