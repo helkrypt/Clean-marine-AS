@@ -68,21 +68,12 @@ export const metadata: Metadata = {
     locale: "nb_NO",
     url: "https://cleanmarin.no",
     siteName: "Clean Marine AS",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Clean Marine AS — Rørehabilitering Offshore og Maritim",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Clean Marine AS — Kjemisk Rørehabilitering",
     description:
       "Kjemisk rehabilitering av rørledninger i offshore og maritim sektor.",
-    images: ["/og-image.jpg"],
   },
 };
 
