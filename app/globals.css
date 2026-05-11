@@ -81,19 +81,3 @@ body::before {
   font-variant-numeric: tabular-nums;
 }
 
-/* ─── Skip to content ────────────────────────────────────────────────────── */
-.skip-link {
-  position: absolute;
-  top: -100%;
-  left: 1rem;
-  padding: 0.5rem 1rem;
-  background: var(--color-rust);
-  color: var(--color-parchment);
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  z-index: 9999;
-  transition: top 0.2s;
-}
-.skip-link:focus {
-  top: 1rem;
-}
