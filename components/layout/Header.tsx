@@ -2,16 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navLinks = [
-  { label: "Tjenester", href: "#services" },
-  { label: "Om oss", href: "#expertise" },
-  { label: "Prosess", href: "#process" },
-];
+import { useTranslations } from "next-intl";
+import LocaleSwitcher from "@/components/layout/LocaleSwitcher";
 
 export default function Header() {
+  const t = useTranslations("Header");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: t("navServices"), href: "#services" },
+    { label: t("navAbout"), href: "#expertise" },
+    { label: t("navProcess"), href: "#process" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -53,7 +56,7 @@ export default function Header() {
               paddingTop: 12,
               paddingBottom: 12,
               width: "calc(100vw - 2rem)",
-              maxWidth: 660,
+              maxWidth: 720,
               backgroundColor: "rgba(28, 43, 58, 0.9)",
               boxShadow: "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.07)",
             },
@@ -78,7 +81,7 @@ export default function Header() {
               transition: "font-size 0.3s",
             }}
           >
-            CLEAN MARINE AS
+            {t("logo")}
           </a>
 
           {/* Desktop nav */}
@@ -94,6 +97,8 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
+
+            <LocaleSwitcher />
 
             {/* CTA pill in nav when scrolled */}
             <AnimatePresence>
@@ -119,7 +124,7 @@ export default function Header() {
                     borderRadius: "2px",
                   }}
                 >
-                  Ta kontakt
+                  {t("cta")}
                 </motion.a>
               )}
             </AnimatePresence>
@@ -129,7 +134,7 @@ export default function Header() {
           <button
             className="flex md:hidden flex-col justify-center items-center gap-[5px] w-8 h-8 cursor-pointer"
             onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label={menuOpen ? "Lukk meny" : "Åpne meny"}
+            aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={menuOpen}
           >
             <span
@@ -185,6 +190,9 @@ export default function Header() {
                   {link.label}
                 </motion.a>
               ))}
+              <div className="mt-4">
+                <LocaleSwitcher variant="mobile" onSwitch={() => setMenuOpen(false)} />
+              </div>
             </nav>
           </motion.div>
         )}

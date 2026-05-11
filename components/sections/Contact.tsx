@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const inputClass = [
@@ -22,21 +23,22 @@ const WEBHOOK_URL =
 
 type SubmitStatus = "idle" | "sending" | "ok" | "error";
 
-const people = [
-  {
-    name: "Robin Ribe",
-    role: "Daglig leder",
-    email: "robin@cleanmarin.no",
-  },
-  {
-    name: "Daniel Modalen",
-    role: "Prosjektleder",
-    email: "daniel@cleanmarin.no",
-  },
-];
-
 export default function Contact() {
+  const t = useTranslations("Contact");
   const [status, setStatus] = useState<SubmitStatus>("idle");
+
+  const people = [
+    {
+      name: "Robin Ribe",
+      role: t("roleDirector"),
+      email: "robin@cleanmarin.no",
+    },
+    {
+      name: "Daniel Modalen",
+      role: t("roleProjectManager"),
+      email: "daniel@cleanmarin.no",
+    },
+  ];
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -69,7 +71,7 @@ export default function Contact() {
               style={{ fontFamily: "var(--font-barlow)" }}
               className="text-teal text-sm tracking-widest uppercase mb-2"
             >
-              KONTAKT
+              {t("eyebrow")}
             </p>
 
             {/* Heading */}
@@ -77,9 +79,9 @@ export default function Contact() {
               style={{ fontFamily: "var(--font-barlow)" }}
               className="text-parchment font-bold text-4xl md:text-5xl uppercase mb-6 leading-tight"
             >
-              Ta kontakt
+              {t("headingLine1")}
               <br />
-              med oss
+              {t("headingLine2")}
             </h2>
 
             {/* Body */}
@@ -87,8 +89,7 @@ export default function Contact() {
               style={{ fontFamily: "var(--font-ibm-plex)" }}
               className="text-mist mb-10"
             >
-              Har du spørsmål om rørehabilitering, priser eller
-              tilgjengelighet? Vi svarer raskt.
+              {t("body")}
             </p>
 
             {/* Contact info */}
@@ -165,7 +166,7 @@ export default function Contact() {
                   style={{ fontFamily: "var(--font-ibm-plex)" }}
                   className="text-mist"
                 >
-                  4770 Høvåg, Norge
+                  {t("location")}
                 </span>
               </div>
             </div>
@@ -220,14 +221,14 @@ export default function Contact() {
                 style={{ fontFamily: "var(--font-barlow)" }}
                 className={labelClass}
               >
-                NAVN
+                {t("labelName")}
               </label>
               <input
                 id="navn"
                 type="text"
                 name="navn"
                 required
-                placeholder="Ditt navn"
+                placeholder={t("placeholderName")}
                 style={{ fontFamily: "var(--font-ibm-plex)" }}
                 className={inputClass}
               />
@@ -240,13 +241,13 @@ export default function Contact() {
                 style={{ fontFamily: "var(--font-barlow)" }}
                 className={labelClass}
               >
-                BEDRIFT
+                {t("labelCompany")}
               </label>
               <input
                 id="bedrift"
                 type="text"
                 name="bedrift"
-                placeholder="Din bedrift"
+                placeholder={t("placeholderCompany")}
                 style={{ fontFamily: "var(--font-ibm-plex)" }}
                 className={inputClass}
               />
@@ -259,14 +260,14 @@ export default function Contact() {
                 style={{ fontFamily: "var(--font-barlow)" }}
                 className={labelClass}
               >
-                E-POST
+                {t("labelEmail")}
               </label>
               <input
                 id="epost"
                 type="email"
                 name="email"
                 required
-                placeholder="din@epost.no"
+                placeholder={t("placeholderEmail")}
                 style={{ fontFamily: "var(--font-ibm-plex)" }}
                 className={inputClass}
               />
@@ -279,13 +280,13 @@ export default function Contact() {
                 style={{ fontFamily: "var(--font-barlow)" }}
                 className={labelClass}
               >
-                TELEFON
+                {t("labelPhone")}
               </label>
               <input
                 id="telefon"
                 type="tel"
                 name="telefon"
-                placeholder="+47 000 00 000"
+                placeholder={t("placeholderPhone")}
                 style={{ fontFamily: "var(--font-ibm-plex)" }}
                 className={inputClass}
               />
@@ -298,14 +299,14 @@ export default function Contact() {
                 style={{ fontFamily: "var(--font-barlow)" }}
                 className={labelClass}
               >
-                MELDING
+                {t("labelMessage")}
               </label>
               <textarea
                 id="melding"
                 name="melding"
                 rows={4}
                 required
-                placeholder="Beskriv ditt behov..."
+                placeholder={t("placeholderMessage")}
                 style={{ fontFamily: "var(--font-ibm-plex)" }}
                 className={[inputClass, "resize-none"].join(" ")}
               />
@@ -318,7 +319,7 @@ export default function Contact() {
               style={{ fontFamily: "var(--font-barlow)" }}
               className="w-full bg-rust hover:bg-rust-light disabled:opacity-60 disabled:cursor-not-allowed text-parchment font-bold uppercase tracking-widest py-4 transition-colors duration-200"
             >
-              {status === "sending" ? "SENDER..." : "SEND MELDING"}
+              {status === "sending" ? t("sending") : t("submit")}
             </button>
 
             {/* Status message */}
@@ -328,7 +329,7 @@ export default function Contact() {
                 style={{ fontFamily: "var(--font-ibm-plex)" }}
                 className="text-teal text-sm mt-3"
               >
-                Takk! Vi har mottatt henvendelsen og svarer raskt.
+                {t("success")}
               </p>
             )}
             {status === "error" && (
@@ -337,7 +338,7 @@ export default function Contact() {
                 style={{ fontFamily: "var(--font-ibm-plex)" }}
                 className="text-rust text-sm mt-3"
               >
-                Noe gikk galt. Send oss heller en e-post på{" "}
+                {t("errorPrefix")}{" "}
                 <a href="mailto:post@cleanmarin.no" className="underline">
                   post@cleanmarin.no
                 </a>
@@ -350,7 +351,7 @@ export default function Contact() {
               style={{ fontFamily: "var(--font-ibm-plex)" }}
               className="text-mist text-xs mt-3"
             >
-              Vi behandler dine opplysninger i henhold til personvernreglene.
+              {t("disclaimer")}
             </p>
           </form>
         </AnimatedSection>

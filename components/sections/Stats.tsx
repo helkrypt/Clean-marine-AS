@@ -2,12 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-
-const metrics = [
-  { value: 20, suffix: "+", label: "Års erfaring", sublabel: "i offshore og maritim sektor" },
-  { value: 100, suffix: "%", label: "Miljøsikker", sublabel: "godkjente kjemikalier" },
-  { value: 48, suffix: "t", label: "Responstid", sublabel: "fra henvendelse til tilbud" },
-];
+import { useTranslations } from "next-intl";
 
 /* ─── Count-up number ────────────────────────────────────────────────────── */
 
@@ -66,8 +61,15 @@ function CountUp({
 /* ─── Stats Bar ──────────────────────────────────────────────────────────── */
 
 export default function Stats() {
+  const t = useTranslations("Stats");
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  const metrics = [
+    { value: 20, suffix: "+", label: t("experience"), sublabel: t("experienceSub") },
+    { value: 100, suffix: "%", label: t("ecoFriendly"), sublabel: t("ecoFriendlySub") },
+    { value: 48, suffix: "t", label: t("response"), sublabel: t("responseSub") },
+  ];
 
   return (
     <section

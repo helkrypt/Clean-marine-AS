@@ -1,8 +1,10 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
 export default function Expertise() {
+  const t = useTranslations("Expertise");
   return (
     <section
       id="expertise"
@@ -29,7 +31,7 @@ export default function Expertise() {
               style={{ fontFamily: "var(--font-barlow)" }}
               className="text-parchment font-semibold text-sm tracking-widest uppercase mt-1"
             >
-              ÅR ERFARING
+              {t("bigStatLabel")}
             </div>
 
             {/* Rust separator */}
@@ -47,7 +49,7 @@ export default function Expertise() {
               style={{ fontFamily: "var(--font-barlow)", fontSize: "28px" }}
               className="text-parchment font-bold italic leading-snug"
             >
-              &ldquo;Vi kjenner offshore og maritim sektor fra innsiden.&rdquo;
+              {t("quote")}
             </p>
           </div>
         </AnimatedSection>
@@ -60,7 +62,7 @@ export default function Expertise() {
               style={{ fontFamily: "var(--font-barlow)" }}
               className="text-teal text-sm tracking-widest uppercase mb-2"
             >
-              OM OSS
+              {t("eyebrow")}
             </p>
 
             {/* Heading */}
@@ -68,9 +70,9 @@ export default function Expertise() {
               style={{ fontFamily: "var(--font-barlow)" }}
               className="text-parchment font-bold text-4xl md:text-5xl uppercase mb-6 leading-tight"
             >
-              Faglært personell
+              {t("headingLine1")}
               <br />
-              med erfaring fra offshore og maritim sektor
+              {t("headingLine2")}
             </h2>
 
             {/* Body paragraphs */}
@@ -78,33 +80,24 @@ export default function Expertise() {
               style={{ fontFamily: "var(--font-ibm-plex)" }}
               className="text-mist leading-relaxed mb-4"
             >
-              Clean Marine AS består av faglært personell med solid erfaring fra
-              rigg og skip i Nordsjøen og internasjonalt.
+              {t("para1")}
             </p>
             <p
               style={{ fontFamily: "var(--font-ibm-plex)" }}
               className="text-mist leading-relaxed mb-4"
             >
-              Teamet vårt holder relevante offshore-sertifikater og har
-              førstehånds forståelse for kravene til drift og sikkerhet i
-              offshore og maritim sektor.
+              {t("para2")}
             </p>
             <p
               style={{ fontFamily: "var(--font-ibm-plex)" }}
               className="text-mist leading-relaxed mb-4"
             >
-              Vi bruker godkjente kjemikalier og dokumenterte metoder for å
-              sikre at rørledninger kommer tilbake til original tilstand — uten
-              å skade rørmaterialet.
+              {t("para3")}
             </p>
 
             {/* Credential badges */}
             <div className="flex flex-wrap gap-3 mt-6">
-              {[
-                "OFFSHORE-SERTIFISERT",
-                "GODKJENTE KJEMIKALIER",
-                "NORDSJØ-ERFARING",
-              ].map((badge) => (
+              {[t("badge1"), t("badge2"), t("badge3")].map((badge) => (
                 <span
                   key={badge}
                   style={{ fontFamily: "var(--font-barlow)" }}

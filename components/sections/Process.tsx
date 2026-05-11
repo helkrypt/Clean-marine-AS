@@ -2,77 +2,54 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
-const steps = [
-  {
-    number: "01",
-    title: "Kartlegging",
-    description:
-      "Grundig inspeksjon og tilstandsvurdering av rørledningsnettet. Dokumentasjon av avleiringstype, plassering og omfang.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="14" cy="14" r="11" stroke="#C4511A" strokeWidth="1.5" />
-        <path d="M14 8v6l4 2" stroke="#C4511A" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-    accentColor: "#C4511A",
-  },
-  {
-    number: "02",
-    title: "Kjemisk analyse",
-    description:
-      "Identifisering av avleiringstype og valg av optimal kjemikalieblanding. Sikkerhetsvurdering for rørmateriale og miljø.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M10 5v8l-4 8h16l-4-8V5" stroke="#1A7A6E" strokeWidth="1.5" strokeLinejoin="round" />
-        <line x1="9" y1="5" x2="19" y2="5" stroke="#1A7A6E" strokeWidth="1.5" />
-        <circle cx="14" cy="17" r="2" fill="#1A7A6E" fillOpacity="0.4" />
-      </svg>
-    ),
-    accentColor: "#1A7A6E",
-  },
-  {
-    number: "03",
-    title: "Renseprosess",
-    description:
-      "Kontrollert sirkulering av kjemikalier løser opp avleiringene. Kontinuerlig overvåking av trykk, temperatur og pH.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M5 14 C5 8.5 8.5 5 14 5 C19.5 5 23 8.5 23 14" stroke="#C4511A" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M5 14 C5 19.5 8.5 23 14 23 C19.5 23 23 19.5 23 14" stroke="#C4511A" strokeWidth="1" strokeOpacity="0.4" strokeLinecap="round" />
-        <path d="M18 5 L23 9 L18 13" stroke="#C4511A" strokeWidth="1.5" strokeLinejoin="round" />
-      </svg>
-    ),
-    accentColor: "#C4511A",
-  },
-  {
-    number: "04",
-    title: "Skylling",
-    description:
-      "Grundig skylling med rent vann fjerner kjemikalierester og løste avleiringer. Nøytralisering av pH.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M8 6 C8 6 12 12 12 16 C12 18.2 10.2 20 8 20 C5.8 20 4 18.2 4 16 C4 12 8 6 8 6Z" stroke="#8A99A8" strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M20 4 C20 4 24 10 24 14 C24 16.2 22.2 18 20 18 C17.8 18 16 16.2 16 14 C16 10 20 4 20 4Z" stroke="#8A99A8" strokeWidth="1.2" strokeLinejoin="round" strokeOpacity="0.6" />
-        <line x1="10" y1="24" x2="22" y2="24" stroke="#8A99A8" strokeWidth="1.2" strokeOpacity="0.5" />
-      </svg>
-    ),
-    accentColor: "#8A99A8",
-  },
-  {
-    number: "05",
-    title: "Verifisering",
-    description:
-      "Dokumentasjon av resultat med before/after-målinger. Skriftlig rapport bekrefter at røret er tilbake til original tilstand.",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="14" cy="14" r="10" stroke="#1A7A6E" strokeWidth="1.5" />
-        <path d="M9 14 L12.5 17.5 L19 11" stroke="#1A7A6E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    accentColor: "#1A7A6E",
-  },
+const stepIcons = [
+  (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" key="step1">
+      <circle cx="14" cy="14" r="11" stroke="#C4511A" strokeWidth="1.5" />
+      <path d="M14 8v6l4 2" stroke="#C4511A" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  ),
+  (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" key="step2">
+      <path d="M10 5v8l-4 8h16l-4-8V5" stroke="#1A7A6E" strokeWidth="1.5" strokeLinejoin="round" />
+      <line x1="9" y1="5" x2="19" y2="5" stroke="#1A7A6E" strokeWidth="1.5" />
+      <circle cx="14" cy="17" r="2" fill="#1A7A6E" fillOpacity="0.4" />
+    </svg>
+  ),
+  (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" key="step3">
+      <path d="M5 14 C5 8.5 8.5 5 14 5 C19.5 5 23 8.5 23 14" stroke="#C4511A" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M5 14 C5 19.5 8.5 23 14 23 C19.5 23 23 19.5 23 14" stroke="#C4511A" strokeWidth="1" strokeOpacity="0.4" strokeLinecap="round" />
+      <path d="M18 5 L23 9 L18 13" stroke="#C4511A" strokeWidth="1.5" strokeLinejoin="round" />
+    </svg>
+  ),
+  (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" key="step4">
+      <path d="M8 6 C8 6 12 12 12 16 C12 18.2 10.2 20 8 20 C5.8 20 4 18.2 4 16 C4 12 8 6 8 6Z" stroke="#8A99A8" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M20 4 C20 4 24 10 24 14 C24 16.2 22.2 18 20 18 C17.8 18 16 16.2 16 14 C16 10 20 4 20 4Z" stroke="#8A99A8" strokeWidth="1.2" strokeLinejoin="round" strokeOpacity="0.6" />
+      <line x1="10" y1="24" x2="22" y2="24" stroke="#8A99A8" strokeWidth="1.2" strokeOpacity="0.5" />
+    </svg>
+  ),
+  (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" key="step5">
+      <circle cx="14" cy="14" r="10" stroke="#1A7A6E" strokeWidth="1.5" />
+      <path d="M9 14 L12.5 17.5 L19 11" stroke="#1A7A6E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
 ];
+
+const stepAccents = ["#C4511A", "#1A7A6E", "#C4511A", "#8A99A8", "#1A7A6E"];
+const stepNumbers = ["01", "02", "03", "04", "05"];
+
+type Step = {
+  number: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  accentColor: string;
+};
 
 /* ─── Single step card ───────────────────────────────────────────────────── */
 
@@ -81,7 +58,7 @@ function StepCard({
   index,
   total,
 }: {
-  step: (typeof steps)[0];
+  step: Step;
   index: number;
   total: number;
 }) {
@@ -192,8 +169,17 @@ function StepCard({
 /* ─── Process Section ────────────────────────────────────────────────────── */
 
 export default function Process() {
+  const t = useTranslations("Process");
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true });
+
+  const steps: Step[] = stepNumbers.map((number, i) => ({
+    number,
+    title: t(`step${i + 1}Title` as "step1Title"),
+    description: t(`step${i + 1}Desc` as "step1Desc"),
+    icon: stepIcons[i],
+    accentColor: stepAccents[i],
+  }));
 
   return (
     <section id="process" className="bg-abyss bg-tech-grid py-24 px-6 md:px-12">
@@ -210,7 +196,7 @@ export default function Process() {
               style={{ fontFamily: "var(--font-barlow)" }}
               className="text-teal text-xs tracking-[0.28em] uppercase mb-3"
             >
-              Fremgangsmåte
+              {t("eyebrow")}
             </p>
             <h2
               className="text-parchment uppercase leading-none mb-6"
@@ -222,9 +208,9 @@ export default function Process() {
                 lineHeight: 0.95,
               }}
             >
-              Slik
+              {t("headingLine1")}
               <br />
-              jobber vi
+              {t("headingLine2")}
             </h2>
 
             <div className="mb-6" style={{ width: "32px", height: "1.5px", backgroundColor: "var(--color-rust)" }} />
@@ -233,8 +219,7 @@ export default function Process() {
               style={{ fontFamily: "var(--font-ibm-plex)", maxWidth: "30ch" }}
               className="text-mist leading-relaxed text-sm"
             >
-              Fem dokumenterte steg som sikrer at rørledningen er klar for
-              produksjon — hver gang.
+              {t("intro")}
             </p>
 
             {/* Step counter */}
@@ -259,7 +244,7 @@ export default function Process() {
                     textTransform: "uppercase",
                   }}
                 >
-                  Trinn
+                  {t("stepCounterLabel")}
                 </p>
                 <p
                   style={{
@@ -269,7 +254,7 @@ export default function Process() {
                     opacity: 0.7,
                   }}
                 >
-                  Dokumentert prosess
+                  {t("stepCounterSub")}
                 </p>
               </div>
             </div>

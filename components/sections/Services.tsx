@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
 /* ─── SVG Icons ─────────────────────────────────────────────────────────── */
@@ -204,6 +205,7 @@ function SpotlightCard({ icon, title, sub, desc, stat, featured, accentColor = "
 /* ─── Services ───────────────────────────────────────────────────────────── */
 
 export default function Services() {
+  const t = useTranslations("Services");
   return (
     <section
       id="services"
@@ -223,7 +225,7 @@ export default function Services() {
                   letterSpacing: "0.32em",
                 }}
               >
-                Tjenester
+                {t("eyebrow")}
               </p>
               <h2
                 className="text-parchment uppercase leading-none"
@@ -234,7 +236,7 @@ export default function Services() {
                   letterSpacing: "-0.01em",
                 }}
               >
-                Hva vi fjerner
+                {t("heading")}
               </h2>
             </div>
             <p
@@ -246,8 +248,7 @@ export default function Services() {
                 lineHeight: 1.65,
               }}
             >
-              Vi spesialiserer oss på kjemisk fjerning av alle avleiringstyper
-              som hemmer effektiv drift i offshore og maritim sektor.
+              {t("intro")}
             </p>
           </div>
         </AnimatedSection>
@@ -259,10 +260,10 @@ export default function Services() {
           <div className="lg:col-span-2 h-full">
             <SpotlightCard
               icon={<RustIcon size={52} />}
-              title="Korrosjon"
-              sub="(Rust og oksidavleiringer)"
-              desc="Jernoksid og rust bygger seg opp over tid og reduserer rørkapasiteten betraktelig. Vi fjerner avleiringene ned til rent metall ved hjelp av selektive kjemikalier som ikke angriper rørveggen."
-              stat={{ value: "98.3%", label: "Renhetsnivå etter behandling" }}
+              title={t("corrosionTitle")}
+              sub={t("corrosionSub")}
+              desc={t("corrosionDesc")}
+              stat={{ value: "98.3%", label: t("corrosionStatLabel") }}
               accentColor="#C4511A"
               featured
               delay={0}
@@ -271,10 +272,10 @@ export default function Services() {
           <div className="h-full">
             <SpotlightCard
               icon={<LimeIcon size={44} />}
-              title="Kalkavleiring"
-              sub="(Kalsiumkarbonat og mineraler)"
-              desc="Kalk og mineralavleiringer fra sjøvann og prosessvæsker blokkerer røret gradvis. Kjemisk oppløsning gjenoppretter full rørkaliber."
-              stat={{ value: "24t", label: "Gjennomsnittlig behandlingstid" }}
+              title={t("limeTitle")}
+              sub={t("limeSub")}
+              desc={t("limeDesc")}
+              stat={{ value: "24t", label: t("limeStatLabel") }}
               accentColor="#F2EDE4"
               delay={0.08}
             />
@@ -284,10 +285,10 @@ export default function Services() {
           <div className="h-full">
             <SpotlightCard
               icon={<BiofilmIcon size={44} />}
-              title="Biofilm"
-              sub="(Biologiske avleiringer)"
-              desc="Mikrobiell vekst forårsaker MIC-korrosjon. Vi fjerner biofilm og desinfiserer overflaten permanent."
-              stat={{ value: "100%", label: "Desinfeksjon bekreftet" }}
+              title={t("biofilmTitle")}
+              sub={t("biofilmSub")}
+              desc={t("biofilmDesc")}
+              stat={{ value: "100%", label: t("biofilmStatLabel") }}
               accentColor="#1A7A6E"
               delay={0.12}
             />
@@ -295,10 +296,10 @@ export default function Services() {
           <div className="lg:col-span-2 h-full">
             <SpotlightCard
               icon={<HumusIcon size={52} />}
-              title="Humus"
-              sub="(Organiske sedimenter)"
-              desc="Organisk materiale og humus akkumuleres i lavtliggende rørpartier og skaper blokkering. Kjemisk behandling løser opp og fjerner sedimentene fullstendig uten mekanisk inngrep — kritisk for rør med begrenset tilgang på offshore- og maritime installasjoner."
-              stat={{ value: "0", label: "Mekaniske inngrep nødvendig" }}
+              title={t("humusTitle")}
+              sub={t("humusSub")}
+              desc={t("humusDesc")}
+              stat={{ value: "0", label: t("humusStatLabel") }}
               accentColor="#8A99A8"
               featured
               delay={0.16}

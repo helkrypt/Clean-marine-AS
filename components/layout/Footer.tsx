@@ -1,11 +1,15 @@
-const navLinks = [
-  { label: "Tjenester", href: "#services" },
-  { label: "Om oss", href: "#expertise" },
-  { label: "Prosess", href: "#process" },
-  { label: "Kontakt", href: "#contact" },
-];
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+
+  const navLinks = [
+    { label: t("navServices"), href: "#services" },
+    { label: t("navAbout"), href: "#expertise" },
+    { label: t("navProcess"), href: "#process" },
+    { label: t("navContact"), href: "#contact" },
+  ];
+
   return (
     <footer className="bg-abyss border-t border-hull py-12 px-6 md:px-12">
       {/* Main two-column grid */}
@@ -21,13 +25,13 @@ export default function Footer() {
               fontSize: "1.125rem",
             }}
           >
-            CLEAN MARINE AS
+            {t("brand")}
           </span>
           <span
             className="text-mist text-sm"
             style={{ fontFamily: "var(--font-ibm-plex)" }}
           >
-            Vi gjenoppretter rør til original tilstand
+            {t("tagline")}
           </span>
         </div>
 
@@ -53,8 +57,10 @@ export default function Footer() {
         className="mt-8 pt-6 border-t border-hull flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
         style={{ fontFamily: "var(--font-ibm-plex)" }}
       >
-        <span className="text-mist text-xs">© {new Date().getFullYear()} Clean Marine AS</span>
-        <span className="text-mist text-xs">Org.nr: 937 548 834</span>
+        <span className="text-mist text-xs">
+          {t("copyright", { year: new Date().getFullYear() })}
+        </span>
+        <span className="text-mist text-xs">{t("orgNr")}</span>
       </div>
 
       {/* Credit line */}
@@ -63,7 +69,7 @@ export default function Footer() {
         style={{ fontFamily: "var(--font-ibm-plex)" }}
       >
         <span className="text-mist text-xs">
-          Nettside utviklet av{" "}
+          {t("creditPrefix")}{" "}
           <a
             href="https://helkrypt.no"
             target="_blank"

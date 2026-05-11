@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
 const stagger = {
   hidden: {},
@@ -25,6 +26,12 @@ const fadeUp = {
 /* ─── Animated Technical Pipe Cross-Section ─────────────────────────────── */
 
 function PipeVisualization() {
+  const t = useTranslations("Hero");
+  const pipeStatuses = [
+    { text: t("pipeStatus1"), times: [0, 0.15, 0.2, 1] },
+    { text: t("pipeStatus2"), times: [0, 0.18, 0.62, 0.68] },
+    { text: t("pipeStatus3"), times: [0, 0.62, 0.78, 0.84] },
+  ];
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.88 }}
@@ -188,11 +195,7 @@ function PipeVisualization() {
         <circle cx="240" cy="240" r="3" fill="#C4511A" fillOpacity="0.8" />
 
         {/* Status label */}
-        {[
-          { text: "AVLEIRING AKTIV", times: [0, 0.15, 0.2, 1] },
-          { text: "RENSING PÅGÅR", times: [0, 0.18, 0.62, 0.68] },
-          { text: "RØRKAPASITET 100%", times: [0, 0.62, 0.78, 0.84] },
-        ].map(({ text, times }) => (
+        {pipeStatuses.map(({ text, times }) => (
           <motion.text
             key={text}
             x="60" y="415"
@@ -214,6 +217,7 @@ function PipeVisualization() {
 /* ─── Magnetic CTA Button ────────────────────────────────────────────────── */
 
 function MagneticCTA() {
+  const t = useTranslations("Hero");
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -252,7 +256,7 @@ function MagneticCTA() {
       }}
       className="border border-rust text-rust px-10 py-4 uppercase text-sm hover:bg-rust hover:text-parchment transition-colors duration-300"
     >
-      Ta kontakt
+      {t("ctaPrimary")}
     </motion.a>
   );
 }
@@ -260,6 +264,7 @@ function MagneticCTA() {
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
 
 export default function Hero() {
+  const t = useTranslations("Hero");
   return (
     <section
       id="hero"
@@ -289,9 +294,9 @@ export default function Hero() {
               letterSpacing: "0.28em",
             }}
           >
-            <span style={{ fontWeight: 700 }}>Clean Marine AS</span>
+            <span style={{ fontWeight: 700 }}>{t("eyebrowBrand")}</span>
             <br />
-            <span style={{ fontWeight: 400 }}>Offshore Rørrehabilitering</span>
+            <span style={{ fontWeight: 400 }}>{t("eyebrowTag")}</span>
           </motion.p>
 
           {/* H1 */}
@@ -306,9 +311,9 @@ export default function Hero() {
               lineHeight: 0.95,
             }}
           >
-            Vi gjenoppretter rør
+            {t("titleLine1")}
             <br />
-            <span style={{ color: "var(--color-rust)" }}>Til original tilstand</span>
+            <span style={{ color: "var(--color-rust)" }}>{t("titleLine2")}</span>
           </motion.h1>
 
           {/* Subheading */}
@@ -321,11 +326,11 @@ export default function Hero() {
               fontSize: "1.0625rem",
             }}
           >
-            <span className="text-parchment">Kjemisk rehabilitering av rørledninger i offshore og maritim sektor.</span>
+            <span className="text-parchment">{t("subtitleStrong")}</span>
             <br />
-            Vi fjerner korrosjon, kalk, biofilm og humus
+            {t("subtitleLine1")}
             <br />
-            Uten å skade rørmaterialet
+            {t("subtitleLine2")}
           </motion.p>
 
           {/* CTA row */}
@@ -339,7 +344,7 @@ export default function Hero() {
                 letterSpacing: "0.02em",
               }}
             >
-              Se tjenester →
+              {t("ctaSecondary")}
             </a>
           </motion.div>
         </motion.div>
@@ -365,7 +370,7 @@ export default function Hero() {
               letterSpacing: "0.25em",
             }}
           >
-            SCROLL
+            {t("scroll")}
           </span>
           <svg width="1" height="32" viewBox="0 0 1 32" aria-hidden="true">
             <line x1="0.5" y1="0" x2="0.5" y2="32" stroke="#8A99A8" strokeOpacity="0.35" strokeWidth="1" />
